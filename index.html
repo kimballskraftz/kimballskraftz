@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kimball’s Kraftz | Order Handmade Chunky Blankets & Pillows</title>
 
-  <!-- Script + clean font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -17,10 +16,10 @@
       --ink: #1f2937;
       --muted: #6b7280;
       --line: #e7e2dc;
-      --accent: #7c3aed; /* violet */
-      --accent2: #0f766e; /* teal */
+      --accent: #7c3aed;
       --shadow: 0 14px 40px rgba(17,24,39,.08);
       --radius: 18px;
+      --danger: #b91c1c;
     }
     *{ box-sizing:border-box; }
     body{
@@ -31,58 +30,41 @@
                   radial-gradient(900px 600px at 95% 20%, rgba(15,118,110,.08), transparent 55%),
                   var(--bg);
     }
-    a{ color: inherit; }
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 28px 18px 64px;
-    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 18px 64px; }
     header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom: 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; flex-wrap:wrap; margin-bottom: 12px;
     }
-    .brand{
-      display:flex; flex-direction:column; gap:4px;
-    }
-    .brand .name{
-      font-family: Allura, cursive;
-      font-size: 56px;
-      line-height: 1;
-      letter-spacing: .2px;
-      margin:0;
-    }
-    .brand .tag{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .brand{ display:flex; flex-direction:column; gap:4px; }
+    .brand .name{ font-family: Allura, cursive; font-size: 56px; line-height: 1; margin:0; }
+    .brand .tag{ margin:0; color: var(--muted); font-size: 14px; }
+
     .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:10px 12px;
-      border:1px solid var(--line);
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px; border:1px solid var(--line);
       background: rgba(255,255,255,.75);
-      border-radius: 999px;
-      box-shadow: 0 6px 18px rgba(17,24,39,.06);
-      font-size: 13px;
-      color: var(--muted);
-      white-space:nowrap;
+      border-radius: 999px; box-shadow: 0 6px 18px rgba(17,24,39,.06);
+      font-size: 13px; color: var(--muted); white-space:nowrap;
     }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      margin-top: 14px;
+
+    /* Instagram landing mode */
+    .igHero{
+      display:none;
+      padding: 18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.85);
+      box-shadow: var(--shadow);
+      margin: 12px 0 16px;
     }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-      .brand .name{ font-size: 46px; }
-    }
+    .igHero h2{ margin:0; font-size: 18px; }
+    .igHero p{ margin:8px 0 0; color: var(--muted); font-size: 13px; line-height:1.45; }
+    .igBtns{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .igBtns .btn{ flex: 1 1 180px; justify-content:center; }
+
+    .grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 16px; margin-top: 14px; }
+    @media (max-width: 860px){ .grid{ grid-template-columns: 1fr; } .brand .name{ font-size: 46px; } }
+
     .card{
       background: var(--card);
       border: 1px solid var(--line);
@@ -90,37 +72,15 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .card .hd{
-      padding: 16px 16px 0;
-    }
-    .card .hd h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: .2px;
-    }
-    .card .hd p{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .card .bd{
-      padding: 14px 16px 16px;
-    }
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    @media (max-width: 520px){
-      .row{ grid-template-columns: 1fr; }
-    }
-    label{
-      display:block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
+    .card .hd{ padding: 16px 16px 0; }
+    .card .hd h2{ margin:0; font-size: 18px; letter-spacing: .2px; }
+    .card .hd p{ margin:6px 0 0; color: var(--muted); font-size: 13px; }
+    .card .bd{ padding: 14px 16px 16px; }
+
+    .row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 520px){ .row{ grid-template-columns: 1fr; } }
+
+    label{ display:block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
     input, select, textarea{
       width:100%;
       border: 1px solid var(--line);
@@ -135,88 +95,73 @@
       border-color: rgba(124,58,237,.5);
       box-shadow: 0 0 0 4px rgba(124,58,237,.12);
     }
+
+    .requiredStar{ color: var(--danger); font-weight:800; margin-left:4px; }
+    .error{ border-color: rgba(185,28,28,.6) !important; box-shadow: 0 0 0 4px rgba(185,28,28,.10) !important; }
+    .errorMsg{ color: var(--danger); font-size: 12px; margin-top: 8px; display:none; line-height:1.4; }
+
     .toggleRow{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
+      display:flex; align-items:flex-start; gap:10px;
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 10px 12px;
       background: #fff;
+      margin-bottom: 10px;
     }
-    .toggleRow input[type="checkbox"]{ width:auto; margin-top:3px; }
+    .toggleRow input[type="checkbox"], .toggleRow input[type="radio"]{ width:auto; margin-top:3px; }
     .toggleRow .tTxt{ flex:1; }
-    .toggleRow .tTxt .tTitle{ font-weight:600; font-size: 14px; }
+    .toggleRow .tTxt .tTitle{ font-weight:700; font-size: 14px; }
     .toggleRow .tTxt .tSub{ color: var(--muted); font-size: 12px; margin-top:2px; }
+
+    .infoBox{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 12px;
+      background: rgba(255,255,255,.85);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      margin: 12px 0;
+    }
+    .infoBox b{ color: var(--ink); }
+
     .priceBox{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+      display:flex; flex-direction:column; gap:10px;
       padding: 14px 14px;
       border-radius: 16px;
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(255,255,255,.92));
     }
-    .priceLine{
-      display:flex;
-      justify-content:space-between;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .priceLine{ display:flex; justify-content:space-between; gap: 10px; font-size: 13px; color: var(--muted); }
     .total{
-      display:flex;
-      justify-content:space-between;
-      align-items:baseline;
-      gap:10px;
-      padding-top: 8px;
-      border-top: 1px dashed rgba(107,114,128,.35);
+      display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+      padding-top: 8px; border-top: 1px dashed rgba(107,114,128,.35);
     }
-    .total .label{ font-weight:700; color: var(--ink); }
-    .total .amt{
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      color: var(--ink);
-    }
-    .btnRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 12px;
-    }
+    .total .label{ font-weight:800; color: var(--ink); }
+    .total .amt{ font-size: 28px; font-weight: 900; letter-spacing: .2px; color: var(--ink); }
+
+    .btnRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
     .btn{
-      appearance:none;
-      border:0;
-      cursor:pointer;
-      padding: 12px 14px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 14px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
+      appearance:none; border:0; cursor:pointer;
+      padding: 12px 14px; border-radius: 14px;
+      font-weight: 900; font-size: 14px;
+      display:inline-flex; gap:8px; align-items:center;
     }
     .btn.primary{
       background: linear-gradient(90deg, var(--accent), #9333ea);
-      color:#fff;
-      box-shadow: 0 14px 28px rgba(124,58,237,.22);
+      color:#fff; box-shadow: 0 14px 28px rgba(124,58,237,.22);
     }
-    .btn.secondary{
+    .btn.secondary{ background: #fff; border:1px solid var(--line); color: var(--ink); }
+    .btn.pay{
       background: #fff;
-      border:1px solid var(--line);
-      color: var(--ink);
+      border: 1px solid var(--line);
+      justify-content:center;
+      font-weight:900;
+      flex: 1 1 180px;
     }
-    .note{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-      line-height: 1.45;
-    }
-    .mini{
-      font-size:12px;
-      color: var(--muted);
-    }
+
+    .mini{ font-size:12px; color: var(--muted); }
+
     details.admin{
       margin-top: 10px;
       border: 1px solid var(--line);
@@ -224,25 +169,66 @@
       padding: 10px 12px;
       background: rgba(255,255,255,.7);
     }
-    details.admin summary{
+    details.admin summary{ cursor:pointer; font-weight:900; color: var(--ink); font-size: 13px; }
+
+    footer{ margin-top: 18px; color: var(--muted); font-size: 12px; text-align:center; }
+
+    /* Swatches */
+    .swatches{ display:flex; flex-wrap:wrap; gap:8px; }
+    .swatch{
+      display:flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid #ddd;
       cursor:pointer;
-      font-weight:700;
-      color: var(--ink);
-      font-size: 13px;
+      font-size:12px;
+      background:#fff;
+      user-select:none;
     }
-    footer{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
+    .swatchDot{
+      width:14px; height:14px; border-radius:50%;
+      border:1px solid rgba(0,0,0,.25);
+      flex:0 0 auto;
     }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
+    .swatch.active{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(124,58,237,.18);
+    }
+
+    /* Selected colors + drag drop */
+    .selectedWrap{
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.7);
+      background:#fff;
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-top: 10px;
     }
+    .selectedHdr{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      margin-bottom: 8px;
+    }
+    .selectedHdr b{ font-size: 13px; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(107,114,128,.35);
+      background: rgba(255,255,255,.9);
+      cursor:grab;
+    }
+    .chip:active{ cursor:grabbing; }
+    .chip .dot{ width:12px; height:12px; border-radius:50%; border:1px solid rgba(0,0,0,.25); }
+    .chip button{
+      border:0; background:transparent; cursor:pointer; font-weight:900;
+      color: var(--muted); padding:0; line-height:1;
+    }
+    .dropHint{ margin-top:8px; font-size:12px; color: var(--muted); }
+
+    /* IG mode */
+    .igMode .grid{ grid-template-columns: 1fr; }
+    .igMode aside.card{ display:none; }
+    .igMode .igHero{ display:block; }
   </style>
 </head>
 
@@ -253,25 +239,61 @@
         <h1 class="name">Kimball’s Kraftz</h1>
         <p class="tag">Handmade chunky chenille blankets & pillows • Custom colors • Cozy gifts</p>
       </div>
-      <div class="pill">Order form + instant pricing (free)</div>
+      <div class="pill">Order form + estimated total</div>
     </header>
 
-    <div class="grid">
+    <section class="igHero" id="igHero">
+      <h2>Quick Links</h2>
+      <p>For Instagram/TikTok: use this simple mobile view. Start an order, then wait for confirmation before paying your deposit.</p>
+      <div class="igBtns">
+        <a class="btn primary" href="#order">Start an Order</a>
+        <a class="btn secondary" href="#pricing">See Total</a>
+        <a class="btn secondary" href="#pay">Pay Deposit</a>
+      </div>
+      <p class="mini" style="margin-top:10px;">
+        Tip: share your link with <b>#ig</b> at the end to show this mobile-friendly version.
+      </p>
+    </section>
+
+    <div class="grid" id="order">
       <!-- ORDER FORM -->
       <section class="card">
         <div class="hd">
           <h2>Place an Order</h2>
-          <p>Choose your item, size, colors, and add-ons. Pricing updates automatically.</p>
+          <p>Choose your item, size, colors, and delivery method. I’ll confirm your order before you pay the deposit.</p>
         </div>
         <div class="bd">
+          <div class="infoBox">
+            <b>Deposit policy:</b> Your order must be <b>confirmed</b> before paying a deposit.
+            The deposit <b>holds your place</b> and initiates ordering supplies.
+            Once confirmed, orders typically take <b>7–10 days</b> to complete.
+          </div>
+
           <div class="row">
             <div>
-              <label for="customerName">Your name</label>
-              <input id="customerName" placeholder="e.g., Alicia" autocomplete="name" />
+              <label for="customerName">Full name<span class="requiredStar">*</span></label>
+              <input id="customerName" placeholder="First + last name" autocomplete="name" />
             </div>
             <div>
-              <label for="customerEmail">Email (optional)</label>
+              <label for="preferredContact">Preferred contact<span class="requiredStar">*</span></label>
+              <select id="preferredContact">
+                <option value="">Select…</option>
+                <option value="text">Text</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="customerPhone">Phone (for texting)<span class="requiredStar">*</span></label>
+              <input id="customerPhone" placeholder="e.g., (603) 555-1234" autocomplete="tel" />
+              <div class="mini">If you prefer email, you can still enter a phone if you’d like.</div>
+            </div>
+            <div>
+              <label for="customerEmail">Email<span class="requiredStar">*</span></label>
               <input id="customerEmail" placeholder="e.g., you@email.com" autocomplete="email" />
+              <div class="mini">If you prefer text, you can still enter an email if you’d like.</div>
             </div>
           </div>
 
@@ -292,8 +314,71 @@
             </div>
           </div>
 
+          <!-- Delivery method -->
+          <div>
+            <label>Delivery method<span class="requiredStar">*</span></label>
+            <div class="toggleRow">
+              <input type="radio" name="delivery" id="deliveryPickup" value="pickup" checked />
+              <div class="tTxt">
+                <div class="tTitle">Local pickup</div>
+                <div class="tSub">No shipping, no tax (NH)</div>
+              </div>
+            </div>
+            <div class="toggleRow">
+              <input type="radio" name="delivery" id="deliveryShip" value="ship" />
+              <div class="tTxt">
+                <div class="tTitle">Ship to me</div>
+                <div class="tSub">Estimated shipping + estimated tax may apply outside NH</div>
+              </div>
+            </div>
+
+            <div id="shipFields" style="display:none; margin-top:12px;">
+              <div class="row">
+                <div>
+                  <label for="shipAddress1">Address line 1<span class="requiredStar">*</span></label>
+                  <input id="shipAddress1" placeholder="Street address" autocomplete="address-line1" />
+                </div>
+                <div>
+                  <label for="shipAddress2">Address line 2</label>
+                  <input id="shipAddress2" placeholder="Apt, unit, etc. (optional)" autocomplete="address-line2" />
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <label for="shipCity">City<span class="requiredStar">*</span></label>
+                  <input id="shipCity" placeholder="City" autocomplete="address-level2" />
+                </div>
+                <div>
+                  <label for="shipState">State<span class="requiredStar">*</span></label>
+                  <select id="shipState" autocomplete="address-level1">
+                    <option value="">Select…</option>
+                    <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+                    <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                    <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+                    <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                    <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+                    <option>DC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <label for="shipZip">ZIP<span class="requiredStar">*</span></label>
+                  <input id="shipZip" placeholder="ZIP code" autocomplete="postal-code" />
+                </div>
+                <div>
+                  <label for="deadline">Needed by (optional)</label>
+                  <input id="deadline" type="date" />
+                </div>
+              </div>
+              <div class="mini">
+                Shipping is an <b>estimate</b> using typical ground rates from ZIP <b>03246</b> and a weight estimate for the selected item.
+              </div>
+            </div>
+          </div>
+
           <!-- Blanket options -->
-          <div id="blanketOptions">
+          <div id="blanketOptions" style="margin-top:12px;">
             <div class="row">
               <div>
                 <label for="blanketSize">Blanket size</label>
@@ -314,18 +399,22 @@
               </div>
             </div>
 
-            <div class="row">
-              <div>
-                <label for="colors">Colors (list them)</label>
-                <input id="colors" placeholder='e.g., forest green, white, red' />
-              </div>
-              <div>
-                <label for="deadline">Needed by (optional)</label>
-                <input id="deadline" type="date" />
-              </div>
+            <div>
+              <label>Pick colors</label>
+              <div id="colorSwatches" class="swatches"></div>
+              <input type="hidden" id="colors" />
             </div>
 
-            <div class="toggleRow">
+            <div class="selectedWrap">
+              <div class="selectedHdr">
+                <b>Selected colors (drag to reorder)</b>
+                <span class="mini">Order matters for stripes</span>
+              </div>
+              <div class="chips" id="selectedColors"></div>
+              <div class="dropHint">Select colors above, then drag chips to set stripe order.</div>
+            </div>
+
+            <div class="toggleRow" style="margin-top:12px;">
               <input type="checkbox" id="addBorder" />
               <div class="tTxt">
                 <div class="tTitle">Add a border</div>
@@ -333,7 +422,7 @@
               </div>
             </div>
 
-            <div class="toggleRow" style="margin-top:10px;">
+            <div class="toggleRow">
               <input type="checkbox" id="addAccents" />
               <div class="tTxt">
                 <div class="tTitle">Add blanket accents</div>
@@ -343,7 +432,7 @@
           </div>
 
           <!-- Pillow options -->
-          <div id="pillowOptions" style="display:none;">
+          <div id="pillowOptions" style="display:none; margin-top:12px;">
             <div class="row">
               <div>
                 <label for="pillowSize">Pillow size</label>
@@ -364,8 +453,9 @@
 
             <div class="row">
               <div>
-                <label for="pillowColors">Colors (list them)</label>
-                <input id="pillowColors" placeholder='e.g., navy, white, gray' />
+                <label>Pick colors</label>
+                <div id="pillowColorSwatches" class="swatches"></div>
+                <input type="hidden" id="pillowColors" />
               </div>
               <div>
                 <label for="pillowStyle">Style</label>
@@ -377,7 +467,16 @@
               </div>
             </div>
 
-            <div class="toggleRow">
+            <div class="selectedWrap">
+              <div class="selectedHdr">
+                <b>Selected colors (drag to reorder)</b>
+                <span class="mini">Order matters for stripes</span>
+              </div>
+              <div class="chips" id="selectedPillowColors"></div>
+              <div class="dropHint">Drag chips to set stripe order.</div>
+            </div>
+
+            <div class="toggleRow" style="margin-top:12px;">
               <input type="checkbox" id="addHandle" />
               <div class="tTxt">
                 <div class="tTitle">Add decorative handle / loop</div>
@@ -387,12 +486,17 @@
           </div>
 
           <div style="margin-top:12px;">
-            <label for="notes">Notes (pattern idea, color placement, allergies, etc.)</label>
+            <label for="notes">Notes (stripe placement, room vibe, etc.)</label>
             <textarea id="notes" placeholder="Tell me what you’re imagining…"></textarea>
           </div>
 
-          <details class="admin">
-            <summary>Pricing settings (you can change these)</summary>
+          <div class="errorMsg" id="formError">
+            Please complete the required fields highlighted in red.
+          </div>
+
+          <!-- Admin-only cost settings -->
+          <details class="admin" id="pricingSettings">
+            <summary>Admin only: labor & overhead (hidden from customer)</summary>
             <div class="row" style="margin-top:10px;">
               <div>
                 <label for="skeinCost">Cost per skein ($)</label>
@@ -405,61 +509,66 @@
             </div>
             <div class="row">
               <div>
-                <label for="profitPct">Profit/overhead (%)</label>
+                <label for="profitPct">Overhead/profit (%)</label>
                 <input id="profitPct" type="number" step="1" value="25" />
               </div>
               <div>
-                <label for="rushPct">Rush fee (%) when needed in ≤ 7 days</label>
+                <label for="rushPct">Rush fee (%) (≤ 7 days)</label>
                 <input id="rushPct" type="number" step="1" value="15" />
               </div>
             </div>
             <div class="mini">
-              Tip: Update these any time you change yarn costs or decide to raise your labor rate.
+              Customer does not see labor/overhead lines—only the final estimate with shipping/tax.
             </div>
           </details>
         </div>
       </section>
 
-      <!-- PRICING + CHECKOUT -->
-      <aside class="card">
+      <!-- TOTAL + PAYMENT -->
+      <aside class="card" id="pricing">
         <div class="hd">
-          <h2>Pricing</h2>
-          <p>Estimated total updates as you customize.</p>
+          <h2>Total Estimate</h2>
+          <p>Customer view: item estimate + shipping + estimated tax (if applicable).</p>
         </div>
         <div class="bd">
           <div class="priceBox">
-            <div class="priceLine"><span>Materials</span><span id="materialsLine">$0.00</span></div>
-            <div class="priceLine"><span>Labor</span><span id="laborLine">$0.00</span></div>
-            <div class="priceLine"><span>Add-ons</span><span id="addonsLine">$0.00</span></div>
-            <div class="priceLine"><span>Profit/overhead</span><span id="profitLine">$0.00</span></div>
-            <div class="priceLine"><span>Rush fee</span><span id="rushLine">$0.00</span></div>
+            <div class="priceLine"><span>Item estimate</span><span id="itemLine">$0.00</span></div>
+            <div class="priceLine"><span>Estimated shipping</span><span id="shipLine">$0.00</span></div>
+            <div class="priceLine"><span>Estimated tax</span><span id="taxLine">$0.00</span></div>
             <div class="total">
               <span class="label">Estimated Total</span>
               <span class="amt" id="totalLine">$0.00</span>
             </div>
           </div>
 
-          <div class="badge" style="margin-top:12px;">
-            <div>
-              <div style="font-weight:800;">What happens next</div>
-              <div class="mini">Click “Send Order” to email your request. I’ll confirm final price + timeline.</div>
-            </div>
+          <div class="infoBox" style="margin-top:12px;">
+            <b>Before you pay:</b> Please submit your order request. I will confirm your order details and total.
+            After confirmation, you may pay the <b>deposit</b> to hold your place and initiate supplies.
           </div>
 
           <div class="btnRow">
-            <button class="btn primary" id="sendBtn" type="button">Send Order</button>
+            <button class="btn primary" id="sendBtn" type="button">Send Order Request</button>
             <button class="btn secondary" id="copyBtn" type="button">Copy Order Text</button>
-          </div>
-
-          <div class="note" id="finePrint">
-            Final pricing may vary slightly based on exact sizing, stitch density, and yarn brand availability.
-            Payment details and turnaround time will be confirmed after review.
           </div>
 
           <hr style="border:0;border-top:1px solid var(--line); margin:16px 0;">
 
-          <div class="mini">
-            Owner contact (edit in code): <strong id="ownerEmailLabel">kimballskraftz@example.com</strong>
+          <div id="pay">
+            <div style="font-weight:900; margin-bottom:8px;">Deposit Options (after confirmation)</div>
+            <div class="mini" style="margin-bottom:10px;">
+              Deposit pre-fills <b>$44</b> on Venmo. Please wait for confirmation before paying.
+            </div>
+            <div class="btnRow">
+              <a class="btn pay" id="venmoBtn" href="#" target="_blank" rel="noopener">Pay with Venmo</a>
+              <a class="btn pay" id="paypalBtn" href="#" target="_blank" rel="noopener">Pay with PayPal</a>
+            </div>
+          </div>
+
+          <div class="mini" style="margin-top:12px;">
+            Orders sent to: <strong id="ownerEmailLabel"></strong>
+          </div>
+          <div class="mini" style="margin-top:6px;">
+            Shipping estimates are approximate and will be confirmed with your final invoice.
           </div>
         </div>
       </aside>
@@ -471,51 +580,116 @@
   </div>
 
   <script>
-    // ====== EDIT THESE ======
-    const OWNER_EMAIL = "kimballskraftz@example.com";  // change to your real email
-    const OWNER_PHONE = ""; // optional, e.g. "(555) 555-5555"
+    // =========================
+    // OWNER SETTINGS
+    // =========================
+    const ORIGIN_ZIP = "03246";
+    const OWNER_EMAIL = "itsnottherapy03246@gmail.com";
 
-    // Baseline usage assumptions (adjust as you learn your averages):
-    // Throw size = about 8 skeins and 2.5 hours (from your notes)
+    const VENMO_USERNAME = "Alicia-Kimball-8";
+    const DEFAULT_VENMO_AMOUNT = "44";
+    const PAYPAL_ME_LINK = "https://www.paypal.me/arcreel03";
+
+    // =========================
+    // BASE PRICING ASSUMPTIONS
+    // =========================
     const BASE = {
       blanket: {
-        // skeins and hours by size (starting points)
-        baby:  { skeins: 5,  hours: 2.0 },
-        throw: { skeins: 8,  hours: 2.5 },
-        twin:  { skeins: 14, hours: 4.0 },
-        queen: { skeins: 20, hours: 5.5 }
+        baby:  { skeins: 5,  hours: 2.0, weightLb: 3 },
+        throw: { skeins: 8,  hours: 2.5, weightLb: 6 },
+        twin:  { skeins: 14, hours: 4.0, weightLb: 9 },
+        queen: { skeins: 20, hours: 5.5, weightLb: 12 }
       },
       pillow: {
-        // for pillow covers (insert separate)
-        "12": { skeins: 2,  hours: 1.0 },
-        "16": { skeins: 3,  hours: 1.5 },
-        "18": { skeins: 4,  hours: 2.0 }
+        "12": { skeins: 2,  hours: 1.0, weightLb: 2.5 },
+        "16": { skeins: 3,  hours: 1.5, weightLb: 3.5 },
+        "18": { skeins: 4,  hours: 2.0, weightLb: 4.5 }
       }
     };
 
-    // Add-on pricing (flat add-ons, plus small labor bumps)
     const ADDONS = {
       border:   { dollars: 10, hours: 0.25 },
       accents:  { dollars: 12, hours: 0.35 },
       handle:   { dollars: 6,  hours: 0.15 },
-      insert:   { dollars: 12, hours: 0.0 } // pillow insert cost placeholder
+      insert:   { dollars: 12, hours: 0.0, weightLb: 0.8 }
     };
 
-    // Pattern complexity multipliers (simple stays baseline)
-    const PATTERN_MULT = {
-      simple: 1.00,
-      striped: 1.08,
-      hearts: 1.15,
-      motif:  1.12
-    };
+    const PATTERN_MULT = { simple: 1.00, striped: 1.08, hearts: 1.15, motif: 1.12 };
+    const YARN_SIZE_MULT = { "7": 1.00, "10": 1.12 };
 
-    // Yarn size multiplier: size 10 typically uses a bit more material (placeholder)
-    const YARN_SIZE_MULT = {
-      "7": 1.00,
-      "10": 1.12
-    };
+    // =========================
+    // COLOR OPTIONS
+    // =========================
+    const COLOR_OPTIONS = [
+      ["Ivory","#f7f3ea"],["White","#ffffff"],["Light Gray","#d9d9d9"],["Medium Gray","#9a9a9a"],
+      ["Taupe","#8b7d6b"],["Sage","#9caf88"],["Forest","#1f3d2b"],["Olive","#6b7f3a"],
+      ["Key Lime","#cfe35b"],["Teal","#2f8f8b"],["Country Blue","#5b7c99"],["Spa Blue","#7fbfc9"],
+      ["Nice To See Blue","#4f6fa3"],["Across The Isle","#5a6b5c"],["Navy","#1f2a44"],["Black","#111111"],
+      ["Soft Pink","#e6b7c9"],["Orchid","#c48acb"],["French Lilac","#bfa6d9"],["Bridesmaid Dress","#d8a7b1"],
+      ["Mulberry It Over","#7a2e4d"],["Cranberry","#7b1e2b"],["Red","#b11226"],["Spiced Persimmon","#d85c2f"],
+      ["Butterscotch Medallion","#d6a441"],["Mustard","#e1b12c"],["Dearest Marigold","#f2a900"],["Yellow","#f6e84a"],
+      ["Coffee","#4a2f23"],["Truffle","#6a5a4a"]
+    ];
 
-    // ====== ELEMENTS ======
+    // =========================
+    // LIGHTWEIGHT SHIPPING + TAX ESTIMATORS (ESTIMATES ONLY)
+    // =========================
+    // Shipping: chooses the cheaper of two simplified ground models (UPS vs FedEx)
+    // based on broad distance bands and weight. This is not a live carrier quote.
+    function estimateDistanceBand(state){
+      const NEAR = new Set(["NH","ME","MA","VT","CT","RI","NY","NJ","PA","MD","DE","DC","VA"]);
+      const MID  = new Set(["NC","SC","WV","OH","MI","IN","IL","KY","TN","GA","FL","AL"]);
+      const FAR  = new Set(["WI","MN","IA","MO","AR","LA","MS","OK","TX","KS","NE","SD","ND","CO","NM","AZ","UT","ID","MT","WY","NV","CA","OR","WA","AK","HI"]);
+      if(NEAR.has(state)) return "near";
+      if(MID.has(state)) return "mid";
+      if(FAR.has(state)) return "far";
+      return "mid";
+    }
+
+    function estimateShipping(state, zip, weightLb){
+      if(!state) return { amount: 0, carrier: "—", note: "Enter a destination state/ZIP for shipping estimate." };
+
+      const band = estimateDistanceBand(state);
+      const w = Math.max(1, Math.ceil(weightLb || 1));
+
+      // Simplified models (typical ranges): base + per-lb + distance adders
+      const ups = (() => {
+        const base = 9.25;
+        const perLb = 1.35;
+        const dist = band === "near" ? 0 : band === "mid" ? 4.5 : 8.5;
+        return base + (perLb * w) + dist;
+      })();
+
+      const fedex = (() => {
+        const base = 10.00;
+        const perLb = 1.20;
+        const dist = band === "near" ? 0.75 : band === "mid" ? 4.0 : 8.0;
+        return base + (perLb * w) + dist;
+      })();
+
+      const min = Math.min(ups, fedex);
+      const carrier = (min === ups) ? "UPS Ground (est.)" : "FedEx Ground (est.)";
+
+      // gentle floor/ceiling to keep it realistic for bulky items
+      const capped = Math.min(Math.max(min, 10), band === "far" ? 45 : 35);
+
+      return { amount: roundToCents(capped), carrier, note: `Based on ${band} distance and ~${w} lb.` };
+    }
+
+    // Tax: NH = 0. Outside NH: use a simple estimate rate (placeholder).
+    // You can adjust DEFAULT_OUT_OF_STATE_TAX_RATE anytime.
+    const DEFAULT_OUT_OF_STATE_TAX_RATE = 0.065; // 6.5% estimate
+    function estimateTax(state, taxableSubtotal){
+      if(!state) return 0;
+      if(state === "NH") return 0;
+      return roundToCents(Math.max(0, taxableSubtotal) * DEFAULT_OUT_OF_STATE_TAX_RATE);
+    }
+
+    function roundToCents(n){ return Math.round((n + Number.EPSILON) * 100) / 100; }
+
+    // =========================
+    // ELEMENTS
+    // =========================
     const $ = (id) => document.getElementById(id);
 
     const product = $("product");
@@ -527,7 +701,6 @@
     const blanketSize = $("blanketSize");
     const pattern = $("pattern");
     const colors = $("colors");
-    const deadline = $("deadline");
     const addBorder = $("addBorder");
     const addAccents = $("addAccents");
 
@@ -538,31 +711,167 @@
     const addHandle = $("addHandle");
 
     const notes = $("notes");
+
     const customerName = $("customerName");
+    const preferredContact = $("preferredContact");
+    const customerPhone = $("customerPhone");
     const customerEmail = $("customerEmail");
 
+    const deliveryPickup = $("deliveryPickup");
+    const deliveryShip = $("deliveryShip");
+    const shipFields = $("shipFields");
+    const shipAddress1 = $("shipAddress1");
+    const shipAddress2 = $("shipAddress2");
+    const shipCity = $("shipCity");
+    const shipState = $("shipState");
+    const shipZip = $("shipZip");
+    const deadline = $("deadline");
+
+    // Admin pricing
     const skeinCost = $("skeinCost");
     const hourlyRate = $("hourlyRate");
     const profitPct = $("profitPct");
     const rushPct = $("rushPct");
 
-    const materialsLine = $("materialsLine");
-    const laborLine = $("laborLine");
-    const addonsLine = $("addonsLine");
-    const profitLine = $("profitLine");
-    const rushLine = $("rushLine");
+    // Customer-visible totals
+    const itemLine = $("itemLine");
+    const shipLine = $("shipLine");
+    const taxLine = $("taxLine");
     const totalLine = $("totalLine");
 
     const sendBtn = $("sendBtn");
     const copyBtn = $("copyBtn");
 
+    const selectedColorsEl = $("selectedColors");
+    const selectedPillowColorsEl = $("selectedPillowColors");
+
+    const formError = $("formError");
+
     $("ownerEmailLabel").textContent = OWNER_EMAIL;
     $("yr").textContent = new Date().getFullYear();
+
+    // Payment links
+    const venmoBtn = $("venmoBtn");
+    const paypalBtn = $("paypalBtn");
 
     function money(n){
       return n.toLocaleString(undefined, { style:"currency", currency:"USD" });
     }
 
+    // IG mode
+    function applyIgMode(){
+      const isIg = (location.hash || "").toLowerCase().includes("ig");
+      if(isIg) document.body.classList.add("igMode");
+      else document.body.classList.remove("igMode");
+    }
+    window.addEventListener("hashchange", applyIgMode);
+    applyIgMode();
+
+    // =========================
+    // SWATCHES + DRAG ORDER
+    // =========================
+    function createSwatch(name, hex, onToggle){
+      const d = document.createElement("div");
+      d.className = "swatch";
+      const dot = document.createElement("span");
+      dot.className = "swatchDot";
+      dot.style.background = hex;
+      d.appendChild(dot);
+      d.appendChild(document.createTextNode(name));
+      d.addEventListener("click", () => onToggle(d, name, hex));
+      return d;
+    }
+
+    function renderSelectedChips(selectedList, targetEl, hiddenInput){
+      targetEl.innerHTML = "";
+
+      selectedList.forEach((c, idx) => {
+        const chip = document.createElement("div");
+        chip.className = "chip";
+        chip.draggable = true;
+
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.style.background = c.hex;
+        chip.appendChild(dot);
+
+        const txt = document.createElement("span");
+        txt.textContent = c.name;
+        chip.appendChild(txt);
+
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.title = "Remove";
+        rm.textContent = "×";
+        rm.addEventListener("click", (e) => {
+          e.stopPropagation();
+          selectedList.splice(idx, 1);
+          hiddenInput.value = selectedList.map(x => x.name).join(", ");
+          renderSelectedChips(selectedList, targetEl, hiddenInput);
+          refreshUI();
+        });
+        chip.appendChild(rm);
+
+        chip.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", String(idx));
+        });
+        chip.addEventListener("dragover", (e) => e.preventDefault());
+        chip.addEventListener("drop", (e) => {
+          e.preventDefault();
+          const from = parseInt(e.dataTransfer.getData("text/plain"), 10);
+          const to = idx;
+          if(Number.isNaN(from) || from === to) return;
+          const moved = selectedList.splice(from, 1)[0];
+          selectedList.splice(to, 0, moved);
+
+          hiddenInput.value = selectedList.map(x => x.name).join(", ");
+          renderSelectedChips(selectedList, targetEl, hiddenInput);
+          refreshUI();
+        });
+
+        targetEl.appendChild(chip);
+      });
+
+      hiddenInput.value = selectedList.map(x => x.name).join(", ");
+    }
+
+    function buildSwatches(containerId, selectedList, targetEl, hiddenInput){
+      const box = document.getElementById(containerId);
+      box.innerHTML = "";
+
+      const setActiveState = () => {
+        const selectedNames = new Set(selectedList.map(x => x.name));
+        [...box.children].forEach(child => {
+          const n = child.textContent.trim();
+          if(selectedNames.has(n)) child.classList.add("active");
+          else child.classList.remove("active");
+        });
+      };
+
+      COLOR_OPTIONS.forEach(([name, hex]) => {
+        const sw = createSwatch(name, hex, () => {
+          const i = selectedList.findIndex(x => x.name === name);
+          if(i >= 0) selectedList.splice(i, 1);
+          else selectedList.push({ name, hex });
+          renderSelectedChips(selectedList, targetEl, hiddenInput);
+          setActiveState();
+          refreshUI();
+        });
+        box.appendChild(sw);
+      });
+
+      renderSelectedChips(selectedList, targetEl, hiddenInput);
+      setActiveState();
+    }
+
+    const selectedBlanketColors = [];
+    const selectedPillowColors = [];
+    buildSwatches("colorSwatches", selectedBlanketColors, selectedColorsEl, colors);
+    buildSwatches("pillowColorSwatches", selectedPillowColors, selectedPillowColorsEl, pillowColors);
+
+    // =========================
+    // PRICING CALC (admin inside; customer sees only final item estimate)
+    // =========================
     function daysUntil(dateStr){
       if(!dateStr) return null;
       const today = new Date();
@@ -571,124 +880,173 @@
       return Math.ceil(ms / (1000*60*60*24));
     }
 
-    function getEstimate(){
+    function getItemEstimate(){
       const prod = product.value;
       const sizeMult = YARN_SIZE_MULT[yarnSize.value] ?? 1;
 
       const skein = parseFloat(skeinCost.value || "0");
       const rate = parseFloat(hourlyRate.value || "0");
-      const profit = Math.max(0, parseFloat(profitPct.value || "0")) / 100;
+      const overhead = Math.max(0, parseFloat(profitPct.value || "0")) / 100;
       const rush = Math.max(0, parseFloat(rushPct.value || "0")) / 100;
 
-      let baseSkeins = 0;
-      let baseHours = 0;
-      let patternMult = 1;
-
-      let addonsDollars = 0;
-      let addonsHours = 0;
+      let baseSkeins = 0, baseHours = 0, patternMult = 1, weightLb = 1;
+      let addonsDollars = 0, addonsHours = 0, addonsWeight = 0;
 
       if(prod === "blanket"){
         const b = BASE.blanket[blanketSize.value];
-        baseSkeins = b.skeins;
-        baseHours  = b.hours;
+        baseSkeins = b.skeins; baseHours = b.hours; weightLb = b.weightLb;
         patternMult = PATTERN_MULT[pattern.value] ?? 1;
-
-        if(addBorder.checked){
-          addonsDollars += ADDONS.border.dollars;
-          addonsHours += ADDONS.border.hours;
-        }
-        if(addAccents.checked){
-          addonsDollars += ADDONS.accents.dollars;
-          addonsHours += ADDONS.accents.hours;
-        }
+        if(addBorder.checked){ addonsDollars += ADDONS.border.dollars; addonsHours += ADDONS.border.hours; }
+        if(addAccents.checked){ addonsDollars += ADDONS.accents.dollars; addonsHours += ADDONS.accents.hours; }
       } else {
         const p = BASE.pillow[pillowSize.value];
-        baseSkeins = p.skeins;
-        baseHours  = p.hours;
+        baseSkeins = p.skeins; baseHours = p.hours; weightLb = p.weightLb;
         patternMult = PATTERN_MULT[pillowStyle.value] ?? 1;
-
-        if(pillowInsert.value === "yes"){
-          addonsDollars += ADDONS.insert.dollars;
-        }
-        if(addHandle.checked){
-          addonsDollars += ADDONS.handle.dollars;
-          addonsHours += ADDONS.handle.hours;
-        }
+        if(pillowInsert.value === "yes"){ addonsDollars += ADDONS.insert.dollars; addonsWeight += (ADDONS.insert.weightLb || 0); }
+        if(addHandle.checked){ addonsDollars += ADDONS.handle.dollars; addonsHours += ADDONS.handle.hours; }
       }
 
-      // Apply multipliers
       const estSkeins = baseSkeins * sizeMult;
       const estHours  = (baseHours + addonsHours) * patternMult;
 
       const materials = estSkeins * skein;
       const labor = estHours * rate;
 
-      // Profit/overhead computed on (materials + labor + addon dollars)
-      const subtotalBeforeProfit = materials + labor + addonsDollars;
-      const profitFee = subtotalBeforeProfit * profit;
+      const subtotal = materials + labor + addonsDollars;
+      const overheadFee = subtotal * overhead;
 
-      // Rush if deadline within 7 days (and not past-due)
-      const dueDays = (prod === "blanket") ? daysUntil(deadline.value) : null;
+      const dueDays = deliveryShip.checked ? daysUntil(deadline.value) : null;
       const isRush = (dueDays !== null && dueDays <= 7 && dueDays >= 0);
-      const rushFee = isRush ? (subtotalBeforeProfit + profitFee) * rush : 0;
+      const rushFee = isRush ? (subtotal + overheadFee) * rush : 0;
 
-      const total = subtotalBeforeProfit + profitFee + rushFee;
+      const itemEstimate = roundToCents(subtotal + overheadFee + rushFee);
 
-      return {
-        prod,
-        estSkeins,
-        estHours,
-        materials,
-        labor,
-        addonsDollars,
-        profitFee,
-        rushFee,
-        total,
-        isRush,
-        dueDays
-      };
+      const totalWeight = roundToCents(weightLb + addonsWeight);
+
+      return { itemEstimate, totalWeight, isRush, dueDays };
     }
 
+    // =========================
+    // DELIVERY + VALIDATION
+    // =========================
+    function isShipping(){ return deliveryShip.checked; }
+
+    function toggleShippingUI(){
+      shipFields.style.display = isShipping() ? "" : "none";
+      refreshUI();
+    }
+
+    deliveryPickup.addEventListener("change", toggleShippingUI);
+    deliveryShip.addEventListener("change", toggleShippingUI);
+
+    function clearErrors(){
+      [customerName, preferredContact, customerPhone, customerEmail,
+       shipAddress1, shipCity, shipState, shipZip].forEach(el => el.classList.remove("error"));
+      formError.style.display = "none";
+    }
+
+    function validateForm(){
+      clearErrors();
+      let ok = true;
+
+      const nameOk = customerName.value.trim().length > 0;
+      if(!nameOk){ customerName.classList.add("error"); ok = false; }
+
+      const prefOk = preferredContact.value === "text" || preferredContact.value === "email";
+      if(!prefOk){ preferredContact.classList.add("error"); ok = false; }
+
+      // Require at least one working contact AND prefered method must be supported
+      const phoneVal = customerPhone.value.trim();
+      const emailVal = customerEmail.value.trim();
+
+      if(preferredContact.value === "text"){
+        if(phoneVal.length < 7){ customerPhone.classList.add("error"); ok = false; }
+      } else if(preferredContact.value === "email"){
+        if(emailVal.length < 5 || !emailVal.includes("@")){ customerEmail.classList.add("error"); ok = false; }
+      }
+
+      // Still require both fields to be filled? User requested customer must provide contact info + preferred.
+      // We'll require BOTH phone and email to reduce back-and-forth.
+      if(phoneVal.length < 7){ customerPhone.classList.add("error"); ok = false; }
+      if(emailVal.length < 5 || !emailVal.includes("@")){ customerEmail.classList.add("error"); ok = false; }
+
+      if(isShipping()){
+        if(shipAddress1.value.trim().length === 0){ shipAddress1.classList.add("error"); ok = false; }
+        if(shipCity.value.trim().length === 0){ shipCity.classList.add("error"); ok = false; }
+        if(shipState.value.trim().length === 0){ shipState.classList.add("error"); ok = false; }
+        if(shipZip.value.trim().length < 5){ shipZip.classList.add("error"); ok = false; }
+      }
+
+      if(!ok) formError.style.display = "block";
+      return ok;
+    }
+
+    // =========================
+    // UI refresh
+    // =========================
     function refreshUI(){
       const prod = product.value;
-
       blanketOptions.style.display = (prod === "blanket") ? "" : "none";
       pillowOptions.style.display  = (prod === "pillow")  ? "" : "none";
 
-      const e = getEstimate();
+      const est = getItemEstimate();
 
-      materialsLine.textContent = money(e.materials);
-      laborLine.textContent = money(e.labor);
-      addonsLine.textContent = money(e.addonsDollars);
-      profitLine.textContent = money(e.profitFee);
-      rushLine.textContent = money(e.rushFee);
-      totalLine.textContent = money(e.total);
+      // Shipping + tax
+      let shipEst = { amount: 0, carrier: "—", note: "" };
+      let taxEst = 0;
 
-      // Small clarification about rush
-      const fp = $("finePrint");
-      if(e.prod === "blanket" && e.isRush){
-        fp.textContent = `Rush fee applied (needed in ${e.dueDays} day(s)). Final pricing may vary slightly based on exact sizing and yarn availability.`;
+      if(isShipping()){
+        const st = shipState.value.trim();
+        const zp = shipZip.value.trim();
+        shipEst = estimateShipping(st, zp, est.totalWeight);
+
+        // Tax is estimated only when shipping outside NH
+        taxEst = estimateTax(st, est.itemEstimate + shipEst.amount);
       } else {
-        fp.textContent = "Final pricing may vary slightly based on exact sizing, stitch density, and yarn brand availability. Payment details and turnaround time will be confirmed after review.";
+        shipEst = { amount: 0, carrier: "Local pickup", note: "" };
+        taxEst = 0;
       }
+
+      itemLine.textContent = money(est.itemEstimate);
+      shipLine.textContent = money(shipEst.amount) + (shipEst.carrier && shipEst.carrier !== "—" ? ` • ${shipEst.carrier}` : "");
+      taxLine.textContent = money(taxEst);
+
+      totalLine.textContent = money(roundToCents(est.itemEstimate + shipEst.amount + taxEst));
+
+      // Payment links
+      const customer = (customerName.value || "").trim();
+      const amount = DEFAULT_VENMO_AMOUNT ? `&amount=${encodeURIComponent(DEFAULT_VENMO_AMOUNT)}` : "";
+      const note = customer ? `&note=${encodeURIComponent("Deposit for " + customer)}` : `&note=${encodeURIComponent("Deposit for order")}`;
+      venmoBtn.href = `https://venmo.com/${encodeURIComponent(VENMO_USERNAME)}?txn=pay${amount}${note}`;
+      paypalBtn.href = PAYPAL_ME_LINK;
     }
 
+    // =========================
+    // Build order text
+    // =========================
     function buildOrderText(){
-      const e = getEstimate();
-      const lines = [];
+      const prod = product.value;
+      const est = getItemEstimate();
 
-      lines.push("KIMBALL’S KRAFTZ — NEW ORDER REQUEST");
+      let shipEst = { amount: 0, carrier: "Local pickup", note: "" };
+      let taxEst = 0;
+
+      const lines = [];
+      lines.push("KIMBALL’S KRAFTZ — ORDER REQUEST");
       lines.push("----------------------------------");
-      if(customerName.value.trim()) lines.push(`Name: ${customerName.value.trim()}`);
-      if(customerEmail.value.trim()) lines.push(`Email: ${customerEmail.value.trim()}`);
-      lines.push(`Product: ${e.prod === "blanket" ? "Chunky Blanket" : "Chunky Pillow"}`);
+      lines.push(`Name: ${customerName.value.trim()}`);
+      lines.push(`Preferred contact: ${preferredContact.value}`);
+      lines.push(`Phone: ${customerPhone.value.trim()}`);
+      lines.push(`Email: ${customerEmail.value.trim()}`);
+      lines.push("");
+
+      lines.push(`Product: ${prod === "blanket" ? "Chunky Blanket" : "Chunky Pillow"}`);
       lines.push(`Yarn: Chenille (size ${yarnSize.value})`);
 
-      if(e.prod === "blanket"){
+      if(prod === "blanket"){
         lines.push(`Blanket size: ${blanketSize.options[blanketSize.selectedIndex].text}`);
         lines.push(`Style: ${pattern.options[pattern.selectedIndex].text}`);
-        if(colors.value.trim()) lines.push(`Colors: ${colors.value.trim()}`);
-        if(deadline.value) lines.push(`Needed by: ${deadline.value}`);
+        lines.push(`Colors (in order): ${colors.value.trim() || "None selected"}`);
         const adds = [];
         if(addBorder.checked) adds.push("Border");
         if(addAccents.checked) adds.push("Accents (flowers/paws/shapes)");
@@ -697,29 +1055,48 @@
         lines.push(`Pillow size: ${pillowSize.value}" x ${pillowSize.value}"`);
         lines.push(`Insert included: ${pillowInsert.value === "yes" ? "Yes" : "No (cover only)"}`);
         lines.push(`Style: ${pillowStyle.options[pillowStyle.selectedIndex].text}`);
-        if(pillowColors.value.trim()) lines.push(`Colors: ${pillowColors.value.trim()}`);
+        lines.push(`Colors (in order): ${pillowColors.value.trim() || "None selected"}`);
         lines.push(`Add-ons: ${addHandle.checked ? "Decorative handle/loop" : "None"}`);
       }
 
-      if(notes.value.trim()) {
+      lines.push("");
+      // Delivery
+      if(isShipping()){
+        const st = shipState.value.trim();
+        const zp = shipZip.value.trim();
+        shipEst = estimateShipping(st, zp, est.totalWeight);
+        taxEst = estimateTax(st, est.itemEstimate + shipEst.amount);
+
+        lines.push("Delivery: Shipping");
+        lines.push(`Ship to: ${shipAddress1.value.trim()}${shipAddress2.value.trim() ? ", " + shipAddress2.value.trim() : ""}`);
+        lines.push(`        ${shipCity.value.trim()}, ${st} ${zp}`);
+        if(deadline.value) lines.push(`Needed by: ${deadline.value}`);
+        lines.push(`Estimated shipping: ${money(shipEst.amount)} (${shipEst.carrier})`);
+        lines.push(`Estimated tax: ${money(taxEst)} (estimate; confirmed at invoice)`);
+      } else {
+        lines.push("Delivery: Local pickup (NH)");
+      }
+
+      if(notes.value.trim()){
         lines.push("");
         lines.push("Notes:");
         lines.push(notes.value.trim());
       }
 
-      lines.push("");
-      lines.push("ESTIMATE (subject to confirmation)");
-      lines.push(`Materials: ${money(e.materials)}`);
-      lines.push(`Labor: ${money(e.labor)}`);
-      lines.push(`Add-ons: ${money(e.addonsDollars)}`);
-      lines.push(`Profit/overhead: ${money(e.profitFee)}`);
-      if(e.rushFee > 0) lines.push(`Rush fee: ${money(e.rushFee)}`);
-      lines.push(`Estimated total: ${money(e.total)}`);
+      const total = roundToCents(est.itemEstimate + shipEst.amount + taxEst);
 
-      if(OWNER_PHONE) {
-        lines.push("");
-        lines.push(`Preferred contact: ${OWNER_PHONE}`);
-      }
+      lines.push("");
+      lines.push("ESTIMATES (subject to confirmation)");
+      lines.push(`Item estimate: ${money(est.itemEstimate)}`);
+      lines.push(`Shipping estimate: ${money(shipEst.amount)}`);
+      lines.push(`Tax estimate: ${money(taxEst)}`);
+      lines.push(`Estimated total: ${money(total)}`);
+
+      lines.push("");
+      lines.push("POLICY");
+      lines.push("- Order must be confirmed prior to paying deposit.");
+      lines.push("- Deposit holds your place and initiates supplies.");
+      lines.push("- Once confirmed, typical completion is 7–10 days.");
 
       return lines.join("\n");
     }
@@ -731,27 +1108,33 @@
         copyBtn.textContent = "Copied!";
         setTimeout(() => copyBtn.textContent = "Copy Order Text", 1200);
       }catch{
-        alert("Copy failed on this browser. You can still use Send Order.");
+        alert("Copy failed on this browser. You can still use Send Order Request.");
       }
     }
 
     function sendEmail(){
+      if(!validateForm()) return;
+
       const subject = encodeURIComponent("New Order Request — Kimball’s Kraftz");
       const body = encodeURIComponent(buildOrderText());
-      const mailto = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
+      window.location.href = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
     }
 
-    // ====== EVENTS ======
+    // =========================
+    // EVENTS
+    // =========================
     [
-      product, yarnSize, blanketSize, pattern, colors, deadline, addBorder, addAccents,
-      pillowSize, pillowInsert, pillowColors, pillowStyle, addHandle,
-      notes, customerName, customerEmail, skeinCost, hourlyRate, profitPct, rushPct
+      product, yarnSize, blanketSize, pattern, addBorder, addAccents,
+      pillowSize, pillowInsert, pillowStyle, addHandle,
+      notes, customerName, preferredContact, customerPhone, customerEmail,
+      shipAddress1, shipAddress2, shipCity, shipState, shipZip, deadline,
+      skeinCost, hourlyRate, profitPct, rushPct
     ].forEach(el => el.addEventListener("input", refreshUI));
 
     sendBtn.addEventListener("click", sendEmail);
     copyBtn.addEventListener("click", copyText);
 
+    toggleShippingUI();
     refreshUI();
   </script>
 </body>
