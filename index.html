@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kimball’s Kraftz | Order Handmade Chunky Blankets & Pillows</title>
+
+  <!-- Script + clean font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbfaf8;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #e7e2dc;
+      --accent: #7c3aed; /* violet */
+      --accent2: #0f766e; /* teal */
+      --shadow: 0 14px 40px rgba(17,24,39,.08);
+      --radius: 18px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(124,58,237,.08), transparent 60%),
+                  radial-gradient(900px 600px at 95% 20%, rgba(15,118,110,.08), transparent 55%),
+                  var(--bg);
+    }
+    a{ color: inherit; }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .brand .name{
+      font-family: Allura, cursive;
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: .2px;
+      margin:0;
+    }
+    .brand .tag{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(17,24,39,.06);
+      font-size: 13px;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .brand .name{ font-size: 46px; }
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding: 16px 16px 0;
+    }
+    .card .hd h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .card .hd p{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .card .bd{
+      padding: 14px 16px 16px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 520px){
+      .row{ grid-template-columns: 1fr; }
+    }
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    input, select, textarea{
+      width:100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      font-size: 14px;
+      background: #fff;
+      outline: none;
+    }
+    textarea{ min-height: 94px; resize: vertical; }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(124,58,237,.5);
+      box-shadow: 0 0 0 4px rgba(124,58,237,.12);
+    }
+    .toggleRow{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+    .toggleRow input[type="checkbox"]{ width:auto; margin-top:3px; }
+    .toggleRow .tTxt{ flex:1; }
+    .toggleRow .tTxt .tTitle{ font-weight:600; font-size: 14px; }
+    .toggleRow .tTxt .tSub{ color: var(--muted); font-size: 12px; margin-top:2px; }
+    .priceBox{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(255,255,255,.92));
+    }
+    .priceLine{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .total{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(107,114,128,.35);
+    }
+    .total .label{ font-weight:700; color: var(--ink); }
+    .total .amt{
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      color: var(--ink);
+    }
+    .btnRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 14px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn.primary{
+      background: linear-gradient(90deg, var(--accent), #9333ea);
+      color:#fff;
+      box-shadow: 0 14px 28px rgba(124,58,237,.22);
+    }
+    .btn.secondary{
+      background: #fff;
+      border:1px solid var(--line);
+      color: var(--ink);
+    }
+    .note{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.45;
+    }
+    .mini{
+      font-size:12px;
+      color: var(--muted);
+    }
+    details.admin{
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.7);
+    }
+    details.admin summary{
+      cursor:pointer;
+      font-weight:700;
+      color: var(--ink);
+      font-size: 13px;
+    }
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.7);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1 class="name">Kimball’s Kraftz</h1>
+        <p class="tag">Handmade chunky chenille blankets & pillows • Custom colors • Cozy gifts</p>
+      </div>
+      <div class="pill">Order form + instant pricing (free)</div>
+    </header>
+
+    <div class="grid">
+      <!-- ORDER FORM -->
+      <section class="card">
+        <div class="hd">
+          <h2>Place an Order</h2>
+          <p>Choose your item, size, colors, and add-ons. Pricing updates automatically.</p>
+        </div>
+        <div class="bd">
+          <div class="row">
+            <div>
+              <label for="customerName">Your name</label>
+              <input id="customerName" placeholder="e.g., Alicia" autocomplete="name" />
+            </div>
+            <div>
+              <label for="customerEmail">Email (optional)</label>
+              <input id="customerEmail" placeholder="e.g., you@email.com" autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="product">Product</label>
+              <select id="product">
+                <option value="blanket">Chunky Blanket</option>
+                <option value="pillow">Chunky Pillow</option>
+              </select>
+            </div>
+            <div>
+              <label for="yarnSize">Chenille yarn size</label>
+              <select id="yarnSize">
+                <option value="7">Size 7</option>
+                <option value="10">Size 10</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Blanket options -->
+          <div id="blanketOptions">
+            <div class="row">
+              <div>
+                <label for="blanketSize">Blanket size</label>
+                <select id="blanketSize">
+                  <option value="baby">Baby (approx. 30" x 40")</option>
+                  <option value="throw" selected>Throw (approx. 45" x 60")</option>
+                  <option value="twin">Twin (approx. 60" x 80")</option>
+                  <option value="queen">Queen (approx. 90" x 90")</option>
+                </select>
+              </div>
+              <div>
+                <label for="pattern">Style</label>
+                <select id="pattern">
+                  <option value="simple" selected>Simple stripes / solid</option>
+                  <option value="striped">Striped (multi-color)</option>
+                  <option value="hearts">Hearts / small motifs</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="colors">Colors (list them)</label>
+                <input id="colors" placeholder='e.g., forest green, white, red' />
+              </div>
+              <div>
+                <label for="deadline">Needed by (optional)</label>
+                <input id="deadline" type="date" />
+              </div>
+            </div>
+
+            <div class="toggleRow">
+              <input type="checkbox" id="addBorder" />
+              <div class="tTxt">
+                <div class="tTitle">Add a border</div>
+                <div class="tSub">Finished edge for a polished look</div>
+              </div>
+            </div>
+
+            <div class="toggleRow" style="margin-top:10px;">
+              <input type="checkbox" id="addAccents" />
+              <div class="tTxt">
+                <div class="tTitle">Add blanket accents</div>
+                <div class="tSub">Flowers, paws, simple shapes (no words)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillow options -->
+          <div id="pillowOptions" style="display:none;">
+            <div class="row">
+              <div>
+                <label for="pillowSize">Pillow size</label>
+                <select id="pillowSize">
+                  <option value="12">12" x 12"</option>
+                  <option value="16" selected>16" x 16"</option>
+                  <option value="18">18" x 18"</option>
+                </select>
+              </div>
+              <div>
+                <label for="pillowInsert">Insert included?</label>
+                <select id="pillowInsert">
+                  <option value="no" selected>No (cover only)</option>
+                  <option value="yes">Yes (insert included)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="pillowColors">Colors (list them)</label>
+                <input id="pillowColors" placeholder='e.g., navy, white, gray' />
+              </div>
+              <div>
+                <label for="pillowStyle">Style</label>
+                <select id="pillowStyle">
+                  <option value="simple" selected>Simple / textured</option>
+                  <option value="striped">Striped</option>
+                  <option value="motif">Small motifs (hearts, etc.)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="toggleRow">
+              <input type="checkbox" id="addHandle" />
+              <div class="tTxt">
+                <div class="tTitle">Add decorative handle / loop</div>
+                <div class="tSub">Cute detail for gift pillows</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <label for="notes">Notes (pattern idea, color placement, allergies, etc.)</label>
+            <textarea id="notes" placeholder="Tell me what you’re imagining…"></textarea>
+          </div>
+
+          <details class="admin">
+            <summary>Pricing settings (you can change these)</summary>
+            <div class="row" style="margin-top:10px;">
+              <div>
+                <label for="skeinCost">Cost per skein ($)</label>
+                <input id="skeinCost" type="number" step="0.01" value="7.99" />
+              </div>
+              <div>
+                <label for="hourlyRate">Labor rate ($/hour)</label>
+                <input id="hourlyRate" type="number" step="1" value="20" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="profitPct">Profit/overhead (%)</label>
+                <input id="profitPct" type="number" step="1" value="25" />
+              </div>
+              <div>
+                <label for="rushPct">Rush fee (%) when needed in ≤ 7 days</label>
+                <input id="rushPct" type="number" step="1" value="15" />
+              </div>
+            </div>
+            <div class="mini">
+              Tip: Update these any time you change yarn costs or decide to raise your labor rate.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- PRICING + CHECKOUT -->
+      <aside class="card">
+        <div class="hd">
+          <h2>Pricing</h2>
+          <p>Estimated total updates as you customize.</p>
+        </div>
+        <div class="bd">
+          <div class="priceBox">
+            <div class="priceLine"><span>Materials</span><span id="materialsLine">$0.00</span></div>
+            <div class="priceLine"><span>Labor</span><span id="laborLine">$0.00</span></div>
+            <div class="priceLine"><span>Add-ons</span><span id="addonsLine">$0.00</span></div>
+            <div class="priceLine"><span>Profit/overhead</span><span id="profitLine">$0.00</span></div>
+            <div class="priceLine"><span>Rush fee</span><span id="rushLine">$0.00</span></div>
+            <div class="total">
+              <span class="label">Estimated Total</span>
+              <span class="amt" id="totalLine">$0.00</span>
+            </div>
+          </div>
+
+          <div class="badge" style="margin-top:12px;">
+            <div>
+              <div style="font-weight:800;">What happens next</div>
+              <div class="mini">Click “Send Order” to email your request. I’ll confirm final price + timeline.</div>
+            </div>
+          </div>
+
+          <div class="btnRow">
+            <button class="btn primary" id="sendBtn" type="button">Send Order</button>
+            <button class="btn secondary" id="copyBtn" type="button">Copy Order Text</button>
+          </div>
+
+          <div class="note" id="finePrint">
+            Final pricing may vary slightly based on exact sizing, stitch density, and yarn brand availability.
+            Payment details and turnaround time will be confirmed after review.
+          </div>
+
+          <hr style="border:0;border-top:1px solid var(--line); margin:16px 0;">
+
+          <div class="mini">
+            Owner contact (edit in code): <strong id="ownerEmailLabel">kimballskraftz@example.com</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="yr"></span> Kimball’s Kraftz • Handmade with chunky chenille yarn
+    </footer>
+  </div>
+
+  <script>
+    // ====== EDIT THESE ======
+    const OWNER_EMAIL = "kimballskraftz@example.com";  // change to your real email
+    const OWNER_PHONE = ""; // optional, e.g. "(555) 555-5555"
+
+    // Baseline usage assumptions (adjust as you learn your averages):
+    // Throw size = about 8 skeins and 2.5 hours (from your notes)
+    const BASE = {
+      blanket: {
+        // skeins and hours by size (starting points)
+        baby:  { skeins: 5,  hours: 2.0 },
+        throw: { skeins: 8,  hours: 2.5 },
+        twin:  { skeins: 14, hours: 4.0 },
+        queen: { skeins: 20, hours: 5.5 }
+      },
+      pillow: {
+        // for pillow covers (insert separate)
+        "12": { skeins: 2,  hours: 1.0 },
+        "16": { skeins: 3,  hours: 1.5 },
+        "18": { skeins: 4,  hours: 2.0 }
+      }
+    };
+
+    // Add-on pricing (flat add-ons, plus small labor bumps)
+    const ADDONS = {
+      border:   { dollars: 10, hours: 0.25 },
+      accents:  { dollars: 12, hours: 0.35 },
+      handle:   { dollars: 6,  hours: 0.15 },
+      insert:   { dollars: 12, hours: 0.0 } // pillow insert cost placeholder
+    };
+
+    // Pattern complexity multipliers (simple stays baseline)
+    const PATTERN_MULT = {
+      simple: 1.00,
+      striped: 1.08,
+      hearts: 1.15,
+      motif:  1.12
+    };
+
+    // Yarn size multiplier: size 10 typically uses a bit more material (placeholder)
+    const YARN_SIZE_MULT = {
+      "7": 1.00,
+      "10": 1.12
+    };
+
+    // ====== ELEMENTS ======
+    const $ = (id) => document.getElementById(id);
+
+    const product = $("product");
+    const yarnSize = $("yarnSize");
+
+    const blanketOptions = $("blanketOptions");
+    const pillowOptions = $("pillowOptions");
+
+    const blanketSize = $("blanketSize");
+    const pattern = $("pattern");
+    const colors = $("colors");
+    const deadline = $("deadline");
+    const addBorder = $("addBorder");
+    const addAccents = $("addAccents");
+
+    const pillowSize = $("pillowSize");
+    const pillowInsert = $("pillowInsert");
+    const pillowColors = $("pillowColors");
+    const pillowStyle = $("pillowStyle");
+    const addHandle = $("addHandle");
+
+    const notes = $("notes");
+    const customerName = $("customerName");
+    const customerEmail = $("customerEmail");
+
+    const skeinCost = $("skeinCost");
+    const hourlyRate = $("hourlyRate");
+    const profitPct = $("profitPct");
+    const rushPct = $("rushPct");
+
+    const materialsLine = $("materialsLine");
+    const laborLine = $("laborLine");
+    const addonsLine = $("addonsLine");
+    const profitLine = $("profitLine");
+    const rushLine = $("rushLine");
+    const totalLine = $("totalLine");
+
+    const sendBtn = $("sendBtn");
+    const copyBtn = $("copyBtn");
+
+    $("ownerEmailLabel").textContent = OWNER_EMAIL;
+    $("yr").textContent = new Date().getFullYear();
+
+    function money(n){
+      return n.toLocaleString(undefined, { style:"currency", currency:"USD" });
+    }
+
+    function daysUntil(dateStr){
+      if(!dateStr) return null;
+      const today = new Date();
+      const d = new Date(dateStr + "T00:00:00");
+      const ms = d - today;
+      return Math.ceil(ms / (1000*60*60*24));
+    }
+
+    function getEstimate(){
+      const prod = product.value;
+      const sizeMult = YARN_SIZE_MULT[yarnSize.value] ?? 1;
+
+      const skein = parseFloat(skeinCost.value || "0");
+      const rate = parseFloat(hourlyRate.value || "0");
+      const profit = Math.max(0, parseFloat(profitPct.value || "0")) / 100;
+      const rush = Math.max(0, parseFloat(rushPct.value || "0")) / 100;
+
+      let baseSkeins = 0;
+      let baseHours = 0;
+      let patternMult = 1;
+
+      let addonsDollars = 0;
+      let addonsHours = 0;
+
+      if(prod === "blanket"){
+        const b = BASE.blanket[blanketSize.value];
+        baseSkeins = b.skeins;
+        baseHours  = b.hours;
+        patternMult = PATTERN_MULT[pattern.value] ?? 1;
+
+        if(addBorder.checked){
+          addonsDollars += ADDONS.border.dollars;
+          addonsHours += ADDONS.border.hours;
+        }
+        if(addAccents.checked){
+          addonsDollars += ADDONS.accents.dollars;
+          addonsHours += ADDONS.accents.hours;
+        }
+      } else {
+        const p = BASE.pillow[pillowSize.value];
+        baseSkeins = p.skeins;
+        baseHours  = p.hours;
+        patternMult = PATTERN_MULT[pillowStyle.value] ?? 1;
+
+        if(pillowInsert.value === "yes"){
+          addonsDollars += ADDONS.insert.dollars;
+        }
+        if(addHandle.checked){
+          addonsDollars += ADDONS.handle.dollars;
+          addonsHours += ADDONS.handle.hours;
+        }
+      }
+
+      // Apply multipliers
+      const estSkeins = baseSkeins * sizeMult;
+      const estHours  = (baseHours + addonsHours) * patternMult;
+
+      const materials = estSkeins * skein;
+      const labor = estHours * rate;
+
+      // Profit/overhead computed on (materials + labor + addon dollars)
+      const subtotalBeforeProfit = materials + labor + addonsDollars;
+      const profitFee = subtotalBeforeProfit * profit;
+
+      // Rush if deadline within 7 days (and not past-due)
+      const dueDays = (prod === "blanket") ? daysUntil(deadline.value) : null;
+      const isRush = (dueDays !== null && dueDays <= 7 && dueDays >= 0);
+      const rushFee = isRush ? (subtotalBeforeProfit + profitFee) * rush : 0;
+
+      const total = subtotalBeforeProfit + profitFee + rushFee;
+
+      return {
+        prod,
+        estSkeins,
+        estHours,
+        materials,
+        labor,
+        addonsDollars,
+        profitFee,
+        rushFee,
+        total,
+        isRush,
+        dueDays
+      };
+    }
+
+    function refreshUI(){
+      const prod = product.value;
+
+      blanketOptions.style.display = (prod === "blanket") ? "" : "none";
+      pillowOptions.style.display  = (prod === "pillow")  ? "" : "none";
+
+      const e = getEstimate();
+
+      materialsLine.textContent = money(e.materials);
+      laborLine.textContent = money(e.labor);
+      addonsLine.textContent = money(e.addonsDollars);
+      profitLine.textContent = money(e.profitFee);
+      rushLine.textContent = money(e.rushFee);
+      totalLine.textContent = money(e.total);
+
+      // Small clarification about rush
+      const fp = $("finePrint");
+      if(e.prod === "blanket" && e.isRush){
+        fp.textContent = `Rush fee applied (needed in ${e.dueDays} day(s)). Final pricing may vary slightly based on exact sizing and yarn availability.`;
+      } else {
+        fp.textContent = "Final pricing may vary slightly based on exact sizing, stitch density, and yarn brand availability. Payment details and turnaround time will be confirmed after review.";
+      }
+    }
+
+    function buildOrderText(){
+      const e = getEstimate();
+      const lines = [];
+
+      lines.push("KIMBALL’S KRAFTZ — NEW ORDER REQUEST");
+      lines.push("----------------------------------");
+      if(customerName.value.trim()) lines.push(`Name: ${customerName.value.trim()}`);
+      if(customerEmail.value.trim()) lines.push(`Email: ${customerEmail.value.trim()}`);
+      lines.push(`Product: ${e.prod === "blanket" ? "Chunky Blanket" : "Chunky Pillow"}`);
+      lines.push(`Yarn: Chenille (size ${yarnSize.value})`);
+
+      if(e.prod === "blanket"){
+        lines.push(`Blanket size: ${blanketSize.options[blanketSize.selectedIndex].text}`);
+        lines.push(`Style: ${pattern.options[pattern.selectedIndex].text}`);
+        if(colors.value.trim()) lines.push(`Colors: ${colors.value.trim()}`);
+        if(deadline.value) lines.push(`Needed by: ${deadline.value}`);
+        const adds = [];
+        if(addBorder.checked) adds.push("Border");
+        if(addAccents.checked) adds.push("Accents (flowers/paws/shapes)");
+        lines.push(`Add-ons: ${adds.length ? adds.join(", ") : "None"}`);
+      } else {
+        lines.push(`Pillow size: ${pillowSize.value}" x ${pillowSize.value}"`);
+        lines.push(`Insert included: ${pillowInsert.value === "yes" ? "Yes" : "No (cover only)"}`);
+        lines.push(`Style: ${pillowStyle.options[pillowStyle.selectedIndex].text}`);
+        if(pillowColors.value.trim()) lines.push(`Colors: ${pillowColors.value.trim()}`);
+        lines.push(`Add-ons: ${addHandle.checked ? "Decorative handle/loop" : "None"}`);
+      }
+
+      if(notes.value.trim()) {
+        lines.push("");
+        lines.push("Notes:");
+        lines.push(notes.value.trim());
+      }
+
+      lines.push("");
+      lines.push("ESTIMATE (subject to confirmation)");
+      lines.push(`Materials: ${money(e.materials)}`);
+      lines.push(`Labor: ${money(e.labor)}`);
+      lines.push(`Add-ons: ${money(e.addonsDollars)}`);
+      lines.push(`Profit/overhead: ${money(e.profitFee)}`);
+      if(e.rushFee > 0) lines.push(`Rush fee: ${money(e.rushFee)}`);
+      lines.push(`Estimated total: ${money(e.total)}`);
+
+      if(OWNER_PHONE) {
+        lines.push("");
+        lines.push(`Preferred contact: ${OWNER_PHONE}`);
+      }
+
+      return lines.join("\n");
+    }
+
+    async function copyText(){
+      const txt = buildOrderText();
+      try{
+        await navigator.clipboard.writeText(txt);
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => copyBtn.textContent = "Copy Order Text", 1200);
+      }catch{
+        alert("Copy failed on this browser. You can still use Send Order.");
+      }
+    }
+
+    function sendEmail(){
+      const subject = encodeURIComponent("New Order Request — Kimball’s Kraftz");
+      const body = encodeURIComponent(buildOrderText());
+      const mailto = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    }
+
+    // ====== EVENTS ======
+    [
+      product, yarnSize, blanketSize, pattern, colors, deadline, addBorder, addAccents,
+      pillowSize, pillowInsert, pillowColors, pillowStyle, addHandle,
+      notes, customerName, customerEmail, skeinCost, hourlyRate, profitPct, rushPct
+    ].forEach(el => el.addEventListener("input", refreshUI));
+
+    sendBtn.addEventListener("click", sendEmail);
+    copyBtn.addEventListener("click", copyText);
+
+    refreshUI();
+  </script>
+</body>
+</html>
